@@ -1,0 +1,33 @@
+$icof-h-margin: 30px
+
+
+.icof
+	width: 0
+	display: flex
+	align-items: baseline
+	position: relative
+	flex:
+		direction: column
+		grow: 1
+	padding: $icof-h-margin
+
+	> :first-child
+		margin-bottom: 15px
+
+	> :not(:first-child)
+		margin-bottom: 5px
+
+	.icof-cells-wrapper
+		display: flex
+		flex:
+			direction: column
+		position: relative
+		left: $icof-h-margin
+
+	.icof-cell
+		border-bottom: 1px solid gray
+
+		@for $indents from 0 to 100
+			&.icof-cell-#{$indents}-indents
+				position: relative
+				left: $icof-h-margin * $indents

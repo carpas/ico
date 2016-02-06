@@ -1,0 +1,345 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Monaco, monospace; }
+
+#app, body, html {
+  width: 100%;
+  height: 100%; }
+
+.ico-canvas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  background-color: #fdf6e3; }
+
+.icof {
+  width: 0;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 30px; }
+  .icof > :first-child {
+    margin-bottom: 15px; }
+  .icof > :not(:first-child) {
+    margin-bottom: 5px; }
+  .icof .icof-cells-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 30px; }
+  .icof .icof-cell {
+    border-bottom: 1px solid gray; }
+    .icof .icof-cell.icof-cell-0-indents {
+      position: relative;
+      left: 0px; }
+    .icof .icof-cell.icof-cell-1-indents {
+      position: relative;
+      left: 30px; }
+    .icof .icof-cell.icof-cell-2-indents {
+      position: relative;
+      left: 60px; }
+    .icof .icof-cell.icof-cell-3-indents {
+      position: relative;
+      left: 90px; }
+    .icof .icof-cell.icof-cell-4-indents {
+      position: relative;
+      left: 120px; }
+    .icof .icof-cell.icof-cell-5-indents {
+      position: relative;
+      left: 150px; }
+    .icof .icof-cell.icof-cell-6-indents {
+      position: relative;
+      left: 180px; }
+    .icof .icof-cell.icof-cell-7-indents {
+      position: relative;
+      left: 210px; }
+    .icof .icof-cell.icof-cell-8-indents {
+      position: relative;
+      left: 240px; }
+    .icof .icof-cell.icof-cell-9-indents {
+      position: relative;
+      left: 270px; }
+    .icof .icof-cell.icof-cell-10-indents {
+      position: relative;
+      left: 300px; }
+    .icof .icof-cell.icof-cell-11-indents {
+      position: relative;
+      left: 330px; }
+    .icof .icof-cell.icof-cell-12-indents {
+      position: relative;
+      left: 360px; }
+    .icof .icof-cell.icof-cell-13-indents {
+      position: relative;
+      left: 390px; }
+    .icof .icof-cell.icof-cell-14-indents {
+      position: relative;
+      left: 420px; }
+    .icof .icof-cell.icof-cell-15-indents {
+      position: relative;
+      left: 450px; }
+    .icof .icof-cell.icof-cell-16-indents {
+      position: relative;
+      left: 480px; }
+    .icof .icof-cell.icof-cell-17-indents {
+      position: relative;
+      left: 510px; }
+    .icof .icof-cell.icof-cell-18-indents {
+      position: relative;
+      left: 540px; }
+    .icof .icof-cell.icof-cell-19-indents {
+      position: relative;
+      left: 570px; }
+    .icof .icof-cell.icof-cell-20-indents {
+      position: relative;
+      left: 600px; }
+    .icof .icof-cell.icof-cell-21-indents {
+      position: relative;
+      left: 630px; }
+    .icof .icof-cell.icof-cell-22-indents {
+      position: relative;
+      left: 660px; }
+    .icof .icof-cell.icof-cell-23-indents {
+      position: relative;
+      left: 690px; }
+    .icof .icof-cell.icof-cell-24-indents {
+      position: relative;
+      left: 720px; }
+    .icof .icof-cell.icof-cell-25-indents {
+      position: relative;
+      left: 750px; }
+    .icof .icof-cell.icof-cell-26-indents {
+      position: relative;
+      left: 780px; }
+    .icof .icof-cell.icof-cell-27-indents {
+      position: relative;
+      left: 810px; }
+    .icof .icof-cell.icof-cell-28-indents {
+      position: relative;
+      left: 840px; }
+    .icof .icof-cell.icof-cell-29-indents {
+      position: relative;
+      left: 870px; }
+    .icof .icof-cell.icof-cell-30-indents {
+      position: relative;
+      left: 900px; }
+    .icof .icof-cell.icof-cell-31-indents {
+      position: relative;
+      left: 930px; }
+    .icof .icof-cell.icof-cell-32-indents {
+      position: relative;
+      left: 960px; }
+    .icof .icof-cell.icof-cell-33-indents {
+      position: relative;
+      left: 990px; }
+    .icof .icof-cell.icof-cell-34-indents {
+      position: relative;
+      left: 1020px; }
+    .icof .icof-cell.icof-cell-35-indents {
+      position: relative;
+      left: 1050px; }
+    .icof .icof-cell.icof-cell-36-indents {
+      position: relative;
+      left: 1080px; }
+    .icof .icof-cell.icof-cell-37-indents {
+      position: relative;
+      left: 1110px; }
+    .icof .icof-cell.icof-cell-38-indents {
+      position: relative;
+      left: 1140px; }
+    .icof .icof-cell.icof-cell-39-indents {
+      position: relative;
+      left: 1170px; }
+    .icof .icof-cell.icof-cell-40-indents {
+      position: relative;
+      left: 1200px; }
+    .icof .icof-cell.icof-cell-41-indents {
+      position: relative;
+      left: 1230px; }
+    .icof .icof-cell.icof-cell-42-indents {
+      position: relative;
+      left: 1260px; }
+    .icof .icof-cell.icof-cell-43-indents {
+      position: relative;
+      left: 1290px; }
+    .icof .icof-cell.icof-cell-44-indents {
+      position: relative;
+      left: 1320px; }
+    .icof .icof-cell.icof-cell-45-indents {
+      position: relative;
+      left: 1350px; }
+    .icof .icof-cell.icof-cell-46-indents {
+      position: relative;
+      left: 1380px; }
+    .icof .icof-cell.icof-cell-47-indents {
+      position: relative;
+      left: 1410px; }
+    .icof .icof-cell.icof-cell-48-indents {
+      position: relative;
+      left: 1440px; }
+    .icof .icof-cell.icof-cell-49-indents {
+      position: relative;
+      left: 1470px; }
+    .icof .icof-cell.icof-cell-50-indents {
+      position: relative;
+      left: 1500px; }
+    .icof .icof-cell.icof-cell-51-indents {
+      position: relative;
+      left: 1530px; }
+    .icof .icof-cell.icof-cell-52-indents {
+      position: relative;
+      left: 1560px; }
+    .icof .icof-cell.icof-cell-53-indents {
+      position: relative;
+      left: 1590px; }
+    .icof .icof-cell.icof-cell-54-indents {
+      position: relative;
+      left: 1620px; }
+    .icof .icof-cell.icof-cell-55-indents {
+      position: relative;
+      left: 1650px; }
+    .icof .icof-cell.icof-cell-56-indents {
+      position: relative;
+      left: 1680px; }
+    .icof .icof-cell.icof-cell-57-indents {
+      position: relative;
+      left: 1710px; }
+    .icof .icof-cell.icof-cell-58-indents {
+      position: relative;
+      left: 1740px; }
+    .icof .icof-cell.icof-cell-59-indents {
+      position: relative;
+      left: 1770px; }
+    .icof .icof-cell.icof-cell-60-indents {
+      position: relative;
+      left: 1800px; }
+    .icof .icof-cell.icof-cell-61-indents {
+      position: relative;
+      left: 1830px; }
+    .icof .icof-cell.icof-cell-62-indents {
+      position: relative;
+      left: 1860px; }
+    .icof .icof-cell.icof-cell-63-indents {
+      position: relative;
+      left: 1890px; }
+    .icof .icof-cell.icof-cell-64-indents {
+      position: relative;
+      left: 1920px; }
+    .icof .icof-cell.icof-cell-65-indents {
+      position: relative;
+      left: 1950px; }
+    .icof .icof-cell.icof-cell-66-indents {
+      position: relative;
+      left: 1980px; }
+    .icof .icof-cell.icof-cell-67-indents {
+      position: relative;
+      left: 2010px; }
+    .icof .icof-cell.icof-cell-68-indents {
+      position: relative;
+      left: 2040px; }
+    .icof .icof-cell.icof-cell-69-indents {
+      position: relative;
+      left: 2070px; }
+    .icof .icof-cell.icof-cell-70-indents {
+      position: relative;
+      left: 2100px; }
+    .icof .icof-cell.icof-cell-71-indents {
+      position: relative;
+      left: 2130px; }
+    .icof .icof-cell.icof-cell-72-indents {
+      position: relative;
+      left: 2160px; }
+    .icof .icof-cell.icof-cell-73-indents {
+      position: relative;
+      left: 2190px; }
+    .icof .icof-cell.icof-cell-74-indents {
+      position: relative;
+      left: 2220px; }
+    .icof .icof-cell.icof-cell-75-indents {
+      position: relative;
+      left: 2250px; }
+    .icof .icof-cell.icof-cell-76-indents {
+      position: relative;
+      left: 2280px; }
+    .icof .icof-cell.icof-cell-77-indents {
+      position: relative;
+      left: 2310px; }
+    .icof .icof-cell.icof-cell-78-indents {
+      position: relative;
+      left: 2340px; }
+    .icof .icof-cell.icof-cell-79-indents {
+      position: relative;
+      left: 2370px; }
+    .icof .icof-cell.icof-cell-80-indents {
+      position: relative;
+      left: 2400px; }
+    .icof .icof-cell.icof-cell-81-indents {
+      position: relative;
+      left: 2430px; }
+    .icof .icof-cell.icof-cell-82-indents {
+      position: relative;
+      left: 2460px; }
+    .icof .icof-cell.icof-cell-83-indents {
+      position: relative;
+      left: 2490px; }
+    .icof .icof-cell.icof-cell-84-indents {
+      position: relative;
+      left: 2520px; }
+    .icof .icof-cell.icof-cell-85-indents {
+      position: relative;
+      left: 2550px; }
+    .icof .icof-cell.icof-cell-86-indents {
+      position: relative;
+      left: 2580px; }
+    .icof .icof-cell.icof-cell-87-indents {
+      position: relative;
+      left: 2610px; }
+    .icof .icof-cell.icof-cell-88-indents {
+      position: relative;
+      left: 2640px; }
+    .icof .icof-cell.icof-cell-89-indents {
+      position: relative;
+      left: 2670px; }
+    .icof .icof-cell.icof-cell-90-indents {
+      position: relative;
+      left: 2700px; }
+    .icof .icof-cell.icof-cell-91-indents {
+      position: relative;
+      left: 2730px; }
+    .icof .icof-cell.icof-cell-92-indents {
+      position: relative;
+      left: 2760px; }
+    .icof .icof-cell.icof-cell-93-indents {
+      position: relative;
+      left: 2790px; }
+    .icof .icof-cell.icof-cell-94-indents {
+      position: relative;
+      left: 2820px; }
+    .icof .icof-cell.icof-cell-95-indents {
+      position: relative;
+      left: 2850px; }
+    .icof .icof-cell.icof-cell-96-indents {
+      position: relative;
+      left: 2880px; }
+    .icof .icof-cell.icof-cell-97-indents {
+      position: relative;
+      left: 2910px; }
+    .icof .icof-cell.icof-cell-98-indents {
+      position: relative;
+      left: 2940px; }
+    .icof .icof-cell.icof-cell-99-indents {
+      position: relative;
+      left: 2970px; }
+
+.icof-cell {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  padding: 10px 5px 10px 10px;
+  font-size: 14px; }
+  .icof-cell:focus {
+    outline: none; }

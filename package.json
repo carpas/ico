@@ -1,0 +1,65 @@
+{
+  "name": "ico-prototypes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "coffee --print --compile server.coffee | node",
+    "start-dev": "gulp --require coffee-script/register | npm start",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "scriptPreprocessor": "./jest-preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "node_modules/react",
+      "node_modules/react-dom",
+      "node_modules/react-addons-test-utils",
+      "node_modules/fbjs"
+    ],
+    "testDirectoryName": "app/__tests__",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "spec/support"
+    ],
+    "testFileExtensions": [
+      "coffee",
+      "litcoffee",
+      "coffee.md",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "coffee",
+      "js",
+      "json",
+      "react"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      "coffeeify"
+    ]
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "coffee-script": "^1.10.0",
+    "coffeeify": "^2.0.1",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.1.1",
+    "jest-cli": "^0.8.2",
+    "react-addons-test-utils": "^0.14.6",
+    "redux": "^3.0.6",
+    "serve-me": "^0.8.2",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  }
+}
