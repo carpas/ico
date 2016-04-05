@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "lsc -k server",
+    "gulp": "lsc gulpfile.ls > gulp",
+    "start-dev": "npm run gulp | node-dev server.ls",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Eduardo Nuzzi",
   "license": "ISC",
   "devDependencies": {
+    "express": "^4.13.4",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-browserify": "^0.5.1",
     "gulp-jade": "^1.1.0",
     "gulp-livereload": "^3.8.1",
