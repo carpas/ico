@@ -5,20 +5,23 @@
   "main": "index.js",
   "scripts": {
     "start": "lsc -k server",
-    "gulp": "lsc gulpfile.ls > gulp",
-    "start-dev": "npm run gulp | node-dev server.ls",
+    "debug": "elm-reactor",
+    "start-dev": "gulp | node-dev server.ls",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Eduardo Nuzzi",
   "license": "ISC",
   "devDependencies": {
+    "LiveScript": "^1.3.1",
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-browserify": "^0.5.1",
+    "gulp-elm": "^0.4.1",
     "gulp-jade": "^1.1.0",
     "gulp-livereload": "^3.8.1",
     "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-stylus": "^2.3.1",
     "vinyl-source-stream": "^1.1.0"
   }
