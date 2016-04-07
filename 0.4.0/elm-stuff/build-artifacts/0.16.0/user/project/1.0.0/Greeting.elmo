@@ -1,0 +1,47 @@
+Elm.Greeting = Elm.Greeting || {};
+Elm.Greeting.make = function (_elm) {
+   "use strict";
+   _elm.Greeting = _elm.Greeting || {};
+   if (_elm.Greeting.values) return _elm.Greeting.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var update = F2(function (action,model) {    var _p0 = action;if (_p0.ctor === "NoOp") {    return model;} else {    return _p0._0;}});
+   var UpdatePerson = function (a) {    return {ctor: "UpdatePerson",_0: a};};
+   var NoOp = {ctor: "NoOp"};
+   var inbox = $Signal.mailbox(NoOp);
+   var view = F2(function (address,person) {
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2($Html.h2,_U.list([]),_U.list([$Html.text(A2($Basics._op["++"],"Todo List For: ",person))]))
+              ,A2($Html.ul,_U.list([]),_U.list([A2($Html.li,_U.list([]),_U.list([$Html.text("Sample Todo Item")]))]))
+              ,A2($Html.input,
+              _U.list([$Html$Attributes.type$("text")
+                      ,$Html$Attributes.placeholder("Name")
+                      ,$Html$Attributes.value(person)
+                      ,A3($Html$Events.on,"input",$Html$Events.targetValue,function (text) {    return A2($Signal.message,address,UpdatePerson(text));})]),
+              _U.list([]))
+              ,A2($Html.input,_U.list([$Html$Attributes.type$("text"),$Html$Attributes.placeholder("New Todo Item")]),_U.list([]))
+              ,A2($Html.button,_U.list([]),_U.list([$Html.text("Add Item")]))]));
+   });
+   var model = "World";
+   var modelSignal = A3($Signal.foldp,update,model,inbox.signal);
+   var main = A2($Signal.map,view(inbox.address),modelSignal);
+   return _elm.Greeting.values = {_op: _op
+                                 ,model: model
+                                 ,view: view
+                                 ,NoOp: NoOp
+                                 ,UpdatePerson: UpdatePerson
+                                 ,update: update
+                                 ,inbox: inbox
+                                 ,modelSignal: modelSignal
+                                 ,main: main};
+};
