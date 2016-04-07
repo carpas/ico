@@ -12,7 +12,6 @@ app
 	
 	..get \/, (req, res) ->
 		res.sendFile \index.html
-		# res.sendFile \index.html, {root: __dirname `path.join` \app/dist }
 
 	..listen port, do
 		console.log "App is listening on port #port"
