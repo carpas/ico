@@ -6,7 +6,8 @@
     "source-directories": [
         "app/src",
         "app/src/Components/ICOF",
-        "app/src/Components/ICOCell"
+        "app/src/Components/ICOCell",
+        "app/src/Util"
     ],
     "exposed-modules": [],
     "dependencies": {

@@ -3,7 +3,8 @@ module ICOF where
 import Html exposing (div, button, p, Html, text)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (class)
-import ICOCell exposing (ICOCell)
+import Convert exposing (maybeToValue)
+import ICOCell exposing (icoCellView, ICOCell (ICOCell))
 
 
 -- MODEL
@@ -18,13 +19,16 @@ initialModel =
     {
         content = [
           ICOCell {
-            value = "Parent",
-            children = [
-              ICOCell {
-                value = "Child 1",
-                children = []
-              }
-            ]
+            value = "1.1",
+            children = [],
+            selected = True,
+            id = 1
+          },
+          ICOCell {
+            value = "1.2",
+            children = [],
+            selected = False,
+            id = 2
           }
         ]
     }
@@ -38,6 +42,7 @@ type Action
     | RemoveICOCell
     | MoveCursorUP
     | MoveCursorDOWN
+    | SelectCell Int
 
 
 update : Action -> Model -> Model
@@ -49,19 +54,22 @@ update action model =
 
     case action of
         NoOp ->
-            model
+          model
 
         AddICOCell ->
-            model
+          model
 
         RemoveICOCell ->
-            model
+          model
 
         MoveCursorUP ->
-            model
+          model
 
         MoveCursorDOWN ->
-            model
+          model
+
+        SelectCell id ->
+          model
 
 
 -- INPUTS
@@ -79,7 +87,12 @@ modelSignal =
 
 view : Signal.Address Action -> Model -> Html
 view address model =
-    div [ class "ICOF" ] []
+  let
+    parentCell = maybeToValue <| List.head model.content
+  in
+    -- FIXME: Add all children.
+    div [ class "ICOF" ]
+      <| List.map (\cell-> icoCellView cell) model.content
 
 
 -- MAIN

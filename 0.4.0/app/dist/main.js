@@ -10286,11 +10286,34 @@ Elm.Html.Events.make = function (_elm) {
                                     ,keyCode: keyCode
                                     ,Options: Options};
 };
-Elm.ICOF = Elm.ICOF || {};
-Elm.ICOF.make = function (_elm) {
+Elm.Convert = Elm.Convert || {};
+Elm.Convert.make = function (_elm) {
    "use strict";
-   _elm.ICOF = _elm.ICOF || {};
-   if (_elm.ICOF.values) return _elm.ICOF.values;
+   _elm.Convert = _elm.Convert || {};
+   if (_elm.Convert.values) return _elm.Convert.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var maybeToValue = function (maybe) {
+      var _p0 = maybe;
+      if (_p0.ctor === "Just") {
+            return _p0._0;
+         } else {
+            return _U.crashCase("Convert",{start: {line: 8,column: 3},end: {line: 10,column: 57}},_p0)("error: maybeToValue Nothing");
+         }
+   };
+   return _elm.Convert.values = {_op: _op,maybeToValue: maybeToValue};
+};
+Elm.ICOCell = Elm.ICOCell || {};
+Elm.ICOCell.make = function (_elm) {
+   "use strict";
+   _elm.ICOCell = _elm.ICOCell || {};
+   if (_elm.ICOCell.values) return _elm.ICOCell.values;
    var _U = Elm.Native.Utils.make(_elm),
    $Basics = Elm.Basics.make(_elm),
    $Debug = Elm.Debug.make(_elm),
@@ -10301,8 +10324,44 @@ Elm.ICOF.make = function (_elm) {
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
    var _op = {};
+   var getCellID = function (cell) {    var _p0 = cell;return function (_) {    return _.id;}(_p0._0);};
+   var isCellSelected = function (cell) {    var _p1 = cell;return function (_) {    return _.selected;}(_p1._0);};
+   var getCellValue = function (cell) {    var _p2 = cell;return function (_) {    return _.value;}(_p2._0);};
+   var icoCellView = function (cell) {
+      var classValue = "ICOCell ";
+      return A2($Html.div,
+      _U.list([A2($Html$Attributes.attribute,"cell-id",$Basics.toString(getCellID(cell)))
+              ,$Html$Attributes.$class(A2($Basics._op["++"],classValue,isCellSelected(cell) ? "selected" : ""))]),
+      _U.list([$Html.text(getCellValue(cell))]));
+   };
+   var ICOCell = function (a) {    return {ctor: "ICOCell",_0: a};};
+   return _elm.ICOCell.values = {_op: _op
+                                ,ICOCell: ICOCell
+                                ,getCellValue: getCellValue
+                                ,isCellSelected: isCellSelected
+                                ,getCellID: getCellID
+                                ,icoCellView: icoCellView};
+};
+Elm.ICOF = Elm.ICOF || {};
+Elm.ICOF.make = function (_elm) {
+   "use strict";
+   _elm.ICOF = _elm.ICOF || {};
+   if (_elm.ICOF.values) return _elm.ICOF.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Convert = Elm.Convert.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $ICOCell = Elm.ICOCell.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
    var view = F2(function (address,model) {
-      return A2($Html.div,_U.list([$Html$Attributes.$class("ICOF")]),_U.list([A2($Html.p,_U.list([]),_U.list([$Html.text(model.content)]))]));
+      var parentCell = $Convert.maybeToValue($List.head(model.content));
+      return A2($Html.div,_U.list([$Html$Attributes.$class("ICOF")]),A2($List.map,function (cell) {    return $ICOCell.icoCellView(cell);},model.content));
    });
    var update = F2(function (action,model) {
       var _p0 = action;
@@ -10311,15 +10370,18 @@ Elm.ICOF.make = function (_elm) {
          case "AddICOCell": return model;
          case "RemoveICOCell": return model;
          case "MoveCursorUP": return model;
+         case "MoveCursorDOWN": return model;
          default: return model;}
    });
+   var SelectCell = function (a) {    return {ctor: "SelectCell",_0: a};};
    var MoveCursorDOWN = {ctor: "MoveCursorDOWN"};
    var MoveCursorUP = {ctor: "MoveCursorUP"};
    var RemoveICOCell = {ctor: "RemoveICOCell"};
    var AddICOCell = {ctor: "AddICOCell"};
    var NoOp = {ctor: "NoOp"};
    var mailbox = $Signal.mailbox(NoOp);
-   var initialModel = {content: "Hello ICOF"};
+   var initialModel = {content: _U.list([$ICOCell.ICOCell({value: "1.1",children: _U.list([]),selected: true,id: 1})
+                                        ,$ICOCell.ICOCell({value: "1.2",children: _U.list([]),selected: false,id: 2})])};
    var modelSignal = A3($Signal.foldp,update,initialModel,mailbox.signal);
    var main = A2($Signal.map,view(mailbox.address),modelSignal);
    var Model = function (a) {    return {content: a};};
@@ -10331,6 +10393,7 @@ Elm.ICOF.make = function (_elm) {
                              ,RemoveICOCell: RemoveICOCell
                              ,MoveCursorUP: MoveCursorUP
                              ,MoveCursorDOWN: MoveCursorDOWN
+                             ,SelectCell: SelectCell
                              ,update: update
                              ,mailbox: mailbox
                              ,modelSignal: modelSignal
