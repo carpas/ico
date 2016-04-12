@@ -10,7 +10,7 @@ app = express!
 
 app
 	..use express.static __dirname + \/app/dist/
-	
+
 	..get \/, (req, res) ->
 		res.sendFile \index.html
 

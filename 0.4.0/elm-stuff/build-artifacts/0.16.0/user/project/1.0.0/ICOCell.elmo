@@ -1,0 +1,16 @@
+Elm.ICOCell = Elm.ICOCell || {};
+Elm.ICOCell.make = function (_elm) {
+   "use strict";
+   _elm.ICOCell = _elm.ICOCell || {};
+   if (_elm.ICOCell.values) return _elm.ICOCell.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var ICOCell = function (a) {    return {ctor: "ICOCell",_0: a};};
+   return _elm.ICOCell.values = {_op: _op,ICOCell: ICOCell};
+};

@@ -60,4 +60,4 @@ gulp
 		gulp
 			..watch \app/src/**/*.elm, <[elm]>
 			..watch \app/src/index.jade, <[jade]>
-			..watch \app/src/main.styl, <[stylus]>
+			..watch \app/src/**/*.styl, <[stylus]>

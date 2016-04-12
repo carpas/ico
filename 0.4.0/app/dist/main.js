@@ -10286,6 +10286,57 @@ Elm.Html.Events.make = function (_elm) {
                                     ,keyCode: keyCode
                                     ,Options: Options};
 };
+Elm.ICOF = Elm.ICOF || {};
+Elm.ICOF.make = function (_elm) {
+   "use strict";
+   _elm.ICOF = _elm.ICOF || {};
+   if (_elm.ICOF.values) return _elm.ICOF.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var view = F2(function (address,model) {
+      return A2($Html.div,_U.list([$Html$Attributes.$class("ICOF")]),_U.list([A2($Html.p,_U.list([]),_U.list([$Html.text(model.content)]))]));
+   });
+   var update = F2(function (action,model) {
+      var _p0 = action;
+      switch (_p0.ctor)
+      {case "NoOp": return model;
+         case "AddICOCell": return model;
+         case "RemoveICOCell": return model;
+         case "MoveCursorUP": return model;
+         default: return model;}
+   });
+   var MoveCursorDOWN = {ctor: "MoveCursorDOWN"};
+   var MoveCursorUP = {ctor: "MoveCursorUP"};
+   var RemoveICOCell = {ctor: "RemoveICOCell"};
+   var AddICOCell = {ctor: "AddICOCell"};
+   var NoOp = {ctor: "NoOp"};
+   var mailbox = $Signal.mailbox(NoOp);
+   var initialModel = {content: "Hello ICOF"};
+   var modelSignal = A3($Signal.foldp,update,initialModel,mailbox.signal);
+   var main = A2($Signal.map,view(mailbox.address),modelSignal);
+   var Model = function (a) {    return {content: a};};
+   return _elm.ICOF.values = {_op: _op
+                             ,Model: Model
+                             ,initialModel: initialModel
+                             ,NoOp: NoOp
+                             ,AddICOCell: AddICOCell
+                             ,RemoveICOCell: RemoveICOCell
+                             ,MoveCursorUP: MoveCursorUP
+                             ,MoveCursorDOWN: MoveCursorDOWN
+                             ,update: update
+                             ,mailbox: mailbox
+                             ,modelSignal: modelSignal
+                             ,view: view
+                             ,main: main};
+};
 Elm.Main = Elm.Main || {};
 Elm.Main.make = function (_elm) {
    "use strict";
@@ -10295,37 +10346,12 @@ Elm.Main.make = function (_elm) {
    $Basics = Elm.Basics.make(_elm),
    $Debug = Elm.Debug.make(_elm),
    $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $Html$Events = Elm.Html.Events.make(_elm),
+   $ICOF = Elm.ICOF.make(_elm),
    $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
    var _op = {};
-   var update = F2(function (action,model) {    var _p0 = action;if (_p0.ctor === "NoOp") {    return model;} else {    return _p0._0;}});
-   var UpdatePerson = function (a) {    return {ctor: "UpdatePerson",_0: a};};
-   var view = F2(function (address,model) {
-      return A2($Html.div,
-      _U.list([]),
-      _U.list([A2($Html.h2,_U.list([]),_U.list([$Html.text(A2($Basics._op["++"],"Hello ",A2($Basics._op["++"],model,"! ")))]))
-              ,A2($Html.input,
-              _U.list([$Html$Attributes.type$("text")
-                      ,$Html$Attributes.placeholder("Put your name here...")
-                      ,A3($Html$Events.on,"input",$Html$Events.targetValue,function (text) {    return A2($Signal.message,address,UpdatePerson(text));})]),
-              _U.list([]))]));
-   });
-   var NoOp = {ctor: "NoOp"};
-   var mailbox = $Signal.mailbox(NoOp);
-   var initialModel = "User";
-   var modelSignal = A3($Signal.foldp,update,initialModel,mailbox.signal);
-   var main = A2($Signal.map,view(mailbox.address),modelSignal);
-   return _elm.Main.values = {_op: _op
-                             ,initialModel: initialModel
-                             ,NoOp: NoOp
-                             ,UpdatePerson: UpdatePerson
-                             ,update: update
-                             ,mailbox: mailbox
-                             ,modelSignal: modelSignal
-                             ,view: view
-                             ,main: main};
+   var main = $ICOF.main;
+   return _elm.Main.values = {_op: _op,main: main};
 };
