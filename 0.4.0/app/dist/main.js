@@ -10327,13 +10327,14 @@ Elm.ICOCell.make = function (_elm) {
    var getCellID = function (cell) {    var _p0 = cell;return function (_) {    return _.id;}(_p0._0);};
    var isCellSelected = function (cell) {    var _p1 = cell;return function (_) {    return _.selected;}(_p1._0);};
    var getCellValue = function (cell) {    var _p2 = cell;return function (_) {    return _.value;}(_p2._0);};
-   var icoCellView = function (cell) {
+   var icoCellView = F2(function (cellInfo,onClick) {
       var classValue = "ICOCell ";
       return A2($Html.div,
-      _U.list([A2($Html$Attributes.attribute,"cell-id",$Basics.toString(getCellID(cell)))
-              ,$Html$Attributes.$class(A2($Basics._op["++"],classValue,isCellSelected(cell) ? "selected" : ""))]),
-      _U.list([$Html.text(getCellValue(cell))]));
-   };
+      _U.list([A2($Html$Attributes.attribute,"cell-id",$Basics.toString(getCellID(cellInfo)))
+              ,$Html$Attributes.$class(A2($Basics._op["++"],classValue,isCellSelected(cellInfo) ? "selected" : ""))
+              ,onClick]),
+      _U.list([$Html.text(getCellValue(cellInfo))]));
+   });
    var ICOCell = function (a) {    return {ctor: "ICOCell",_0: a};};
    return _elm.ICOCell.values = {_op: _op
                                 ,ICOCell: ICOCell
@@ -10353,16 +10354,13 @@ Elm.ICOF.make = function (_elm) {
    $Debug = Elm.Debug.make(_elm),
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
    $ICOCell = Elm.ICOCell.make(_elm),
    $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
    var _op = {};
-   var view = F2(function (address,model) {
-      var parentCell = $Convert.maybeToValue($List.head(model.content));
-      return A2($Html.div,_U.list([$Html$Attributes.$class("ICOF")]),A2($List.map,function (cell) {    return $ICOCell.icoCellView(cell);},model.content));
-   });
    var update = F2(function (action,model) {
       var _p0 = action;
       switch (_p0.ctor)
@@ -10371,7 +10369,9 @@ Elm.ICOF.make = function (_elm) {
          case "RemoveICOCell": return model;
          case "MoveCursorUP": return model;
          case "MoveCursorDOWN": return model;
-         default: return model;}
+         default: return _U.update(model,
+           {content: _U.list([$ICOCell.ICOCell({value: "1.1",children: _U.list([]),selected: false,id: 1})
+                             ,$ICOCell.ICOCell({value: "1.2",children: _U.list([]),selected: true,id: 2})])});}
    });
    var SelectCell = function (a) {    return {ctor: "SelectCell",_0: a};};
    var MoveCursorDOWN = {ctor: "MoveCursorDOWN"};
@@ -10380,6 +10380,16 @@ Elm.ICOF.make = function (_elm) {
    var AddICOCell = {ctor: "AddICOCell"};
    var NoOp = {ctor: "NoOp"};
    var mailbox = $Signal.mailbox(NoOp);
+   var view = F2(function (address,model) {
+      var parentCell = $Convert.maybeToValue($List.head(model.content));
+      return A2($Html.div,
+      _U.list([$Html$Attributes.$class("ICOF")]),
+      A2($List.map,
+      function (cellInfo) {
+         return A2($ICOCell.icoCellView,cellInfo,A2($Html$Events.onClick,mailbox.address,SelectCell($ICOCell.getCellID(cellInfo))));
+      },
+      model.content));
+   });
    var initialModel = {content: _U.list([$ICOCell.ICOCell({value: "1.1",children: _U.list([]),selected: true,id: 1})
                                         ,$ICOCell.ICOCell({value: "1.2",children: _U.list([]),selected: false,id: 2})])};
    var modelSignal = A3($Signal.foldp,update,initialModel,mailbox.signal);

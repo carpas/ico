@@ -4,7 +4,7 @@ import Html exposing (div, button, p, Html, text)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (class)
 import Convert exposing (maybeToValue)
-import ICOCell exposing (icoCellView, ICOCell (ICOCell))
+import ICOCell exposing (icoCellView, ICOCell (ICOCell), getCellID)
 
 
 -- MODEL
@@ -69,10 +69,25 @@ update action model =
           model
 
         SelectCell id ->
-          model
+          {
+            model | content = [
+              ICOCell {
+                value = "1.1",
+                children = [],
+                selected = False,
+                id = 1
+              },
+              ICOCell {
+                value = "1.2",
+                children = [],
+                selected = True,
+                id = 2
+              }
+            ]
+          }
 
 
--- INPUTS
+-- SIGNALS
 
 mailbox : Signal.Mailbox Action
 mailbox =
@@ -92,7 +107,9 @@ view address model =
   in
     -- FIXME: Add all children.
     div [ class "ICOF" ]
-      <| List.map (\cell-> icoCellView cell) model.content
+      <| List.map
+        (\cellInfo-> icoCellView cellInfo <| onClick mailbox.address <| SelectCell <| getCellID cellInfo)
+        model.content
 
 
 -- MAIN

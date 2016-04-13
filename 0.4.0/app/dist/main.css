@@ -1,10 +1,20 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body > div {
   height: 100%;
   width: 100%;
+}
+.ICOCell {
+  background-color: #000;
+  margin-bottom: 15px;
+  padding: 10px;
+  color: #fff;
+}
+.ICOCell.selected {
+  background-color: #add8e6;
 }
 .ICOF {
   height: 100%;

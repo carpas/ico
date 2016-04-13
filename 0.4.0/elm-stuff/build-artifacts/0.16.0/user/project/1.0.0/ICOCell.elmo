@@ -16,13 +16,14 @@ Elm.ICOCell.make = function (_elm) {
    var getCellID = function (cell) {    var _p0 = cell;return function (_) {    return _.id;}(_p0._0);};
    var isCellSelected = function (cell) {    var _p1 = cell;return function (_) {    return _.selected;}(_p1._0);};
    var getCellValue = function (cell) {    var _p2 = cell;return function (_) {    return _.value;}(_p2._0);};
-   var icoCellView = function (cell) {
+   var icoCellView = F2(function (cellInfo,onClick) {
       var classValue = "ICOCell ";
       return A2($Html.div,
-      _U.list([A2($Html$Attributes.attribute,"cell-id",$Basics.toString(getCellID(cell)))
-              ,$Html$Attributes.$class(A2($Basics._op["++"],classValue,isCellSelected(cell) ? "selected" : ""))]),
-      _U.list([$Html.text(getCellValue(cell))]));
-   };
+      _U.list([A2($Html$Attributes.attribute,"cell-id",$Basics.toString(getCellID(cellInfo)))
+              ,$Html$Attributes.$class(A2($Basics._op["++"],classValue,isCellSelected(cellInfo) ? "selected" : ""))
+              ,onClick]),
+      _U.list([$Html.text(getCellValue(cellInfo))]));
+   });
    var ICOCell = function (a) {    return {ctor: "ICOCell",_0: a};};
    return _elm.ICOCell.values = {_op: _op
                                 ,ICOCell: ICOCell

@@ -1,6 +1,6 @@
 module ICOCell where
 
-import Html exposing (div, text, Html)
+import Html exposing (div, text, Html, button)
 import Html.Attributes exposing (class, attribute)
 
 
@@ -33,14 +33,15 @@ getCellID cell =
 
 -- VIEW
 
-icoCellView : ICOCell -> Html
-icoCellView cell =
+icoCellView : ICOCell -> Html.Attribute -> Html
+icoCellView cellInfo onClick =
   let
     classValue = "ICOCell "
   in
     div [
-      attribute "cell-id" <| toString <| getCellID cell,
-      class <| classValue ++ if isCellSelected cell then "selected" else "" 
+      attribute "cell-id" <| toString <| getCellID cellInfo,
+      class <| classValue ++ if isCellSelected cellInfo then "selected" else "",
+      onClick
     ] [
-      text <| getCellValue cell
+      text <| getCellValue cellInfo
     ]
