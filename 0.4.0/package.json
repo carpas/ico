@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "lsc server.ls",
-    "start-dev": "gulp | node-dev server.ls",
+    "start-dev": "node-dev server.ls | gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Eduardo Nuzzi",
