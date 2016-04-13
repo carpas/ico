@@ -4,49 +4,48 @@ require! {
 	\gulp-stylus : stylus
 	\gulp-livereload : livereload
 	\gulp-autoprefixer : autoprefixer
+	\vinyl-source-stream : source
 	\gulp-notify : notify
 	\gulp-jade : jade
+	\gulp-livescript : livescript
 	\vinyl-source-stream : source
-	\gulp-elm : elm
 	\gulp-plumber : plumber
 }
 
 destDir = \app/dist
 
-notifyError = ->
-	notify.onError("Error: <%= error.message %>")
-
+notifyOnError = ->
+	notify!.write it.message
 
 gulp
-	..task \elm-init, elm.init
-
-
-	..task \elm, <[elm-init]>, !->
-		gulp
-			.src \app/src/main.elm
-			.pipe plumber do
-				*errorHandler: notifyError!
-			.pipe elm.make()
-			.pipe gulp.dest \app/dist
-			.pipe livereload()
+	..task \livescript, !->
+		browserify \./app/src/main.ls, do
+			extensions: <[.ls]>
+		.bundle!
+		.on \error, notifyOnError
+		.pipe plumber do
+			errorHandler: notifyOnError
+		.pipe source \main.js
+		.pipe gulp.dest destDir
+		.pipe livereload!
 
 
 	..task \jade, !->
 		gulp
 			.src \app/src/index.jade
 			.pipe plumber do
-				*errorHandler: notifyError!
-			.pipe jade()
+				errorHandler: notifyOnError
+			.pipe jade!
 			.pipe gulp.dest destDir
-			.pipe livereload()
+			.pipe livereload!
 
 
 	..task \stylus, !->
 		gulp
 			.src \app/src/main.styl
 			.pipe plumber do
-				*errorHandler: notifyError!
-			.pipe stylus()
+				errorHandler: notifyOnError
+			.pipe stylus!
 			.pipe autoprefixer {
 				browsers: ["last 2 versions"]
 				-cascade
@@ -58,6 +57,6 @@ gulp
 	..task \default, !->
 		livereload.listen!
 		gulp
-			..watch \app/src/**/*.elm, <[elm]>
+			..watch \app/src/**/*.ls, <[livescript]>
 			..watch \app/src/index.jade, <[jade]>
 			..watch \app/src/**/*.styl, <[stylus]>
