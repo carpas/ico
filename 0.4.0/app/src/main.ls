@@ -3,13 +3,18 @@ require! {
   \react-dom : {render}
   \./components/ICOF/ICOF
   \./reducers/reducers
+  \./reducers/initialState
   \redux : {createStore}
   \react-redux : {Provider}
 }
 
 {createElement} = React
 {div} = React.DOM
-const store = createStore reducers
+
+const store = createStore do
+  reducers
+  initialState
+  that if window.devToolsExtension()
 
 
 const Main = ->

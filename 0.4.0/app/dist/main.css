@@ -2,16 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 body > div {
   height: 100%;
   width: 100%;
 }
 .ICOCell {
-  background-color: #000;
   margin-bottom: 15px;
   padding: 10px;
-  color: #fff;
+  color: #000;
+  border-bottom: 1px solid #000;
+  cursor: pointer;
 }
 .ICOCell.selected {
   background-color: #add8e6;
@@ -20,4 +25,6 @@ body > div {
   height: 100%;
   width: 100%;
   padding: 30px;
+  background-color: #fdf6d3;
+  font-family: "Open Sans";
 }

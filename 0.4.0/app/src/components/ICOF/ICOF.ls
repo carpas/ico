@@ -3,20 +3,21 @@ require! {
   \../../actions/actions : {ActionCreators}
   \prelude-ls : {map}
   \react-redux : {connect}
+  \../ICOCell/ICOCell
 }
 
-{DOM} = React
-{object, func} = React.PropTypes
+{DOM, createElement} = React
 {div} = DOM
 
 
 const ICOF = React.createClass do
 
   render: ->
-    div {className: "ICOF", onClick: @props.onClick},
+    div {className: \ICOF, onClick: @props.onClick},
       map ~>
-        div {}, it.content
+        createElement ICOCell, {key: it.index, index: it.index, text: it.text}
       , @props.content
+
 
 
 mapStateToProps = (state) ->

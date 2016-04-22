@@ -1,9 +1,13 @@
 const initialState = do
   ICOF:
     content:
-      * content: \Helloo
+      * text: \Helloo
+        index: 0
 
-      * content: \Helloo2
+      * text: \Helloo2
+        index: 1
+
+    id: 0
 
 
 

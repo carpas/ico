@@ -12,8 +12,9 @@ ICOF = (state = initialState.ICOF, action) ->
       Object.assign {}, state, do
         content:
           ...state.content
-          content:
-            "Hello"
+          text:
+            "Hello ICO"
+          index: state.content.length
 
     | _ =>
       state
