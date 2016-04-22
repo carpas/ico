@@ -1,17 +1,21 @@
 require! {
   \react : React
-  \react-dom : ReactDOM
-  \./components/ICOF/ICOF : ICOF
-  \./reducers/initialState : initialState
+  \react-dom : {render}
+  \./components/ICOF/ICOF
+  \./reducers/reducers
+  \redux : {createStore}
+  \react-redux : {Provider}
 }
 
 {createElement} = React
 {div} = React.DOM
+const store = createStore reducers
 
 
-Main = ->
-  ReactDOM.render do
-    createElement ICOF, {}
+const Main = ->
+  render do
+    createElement Provider, {store},
+      createElement ICOF, {}
     document.getElementById \ico-wrapper
 
 
