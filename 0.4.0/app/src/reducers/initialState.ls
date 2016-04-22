@@ -1,11 +1,13 @@
 const initialState = do
   ICOF:
-    content:
+    cells:
       * text: \Helloo
         index: 0
+        selected: false
 
       * text: \Helloo2
         index: 1
+        selected: true
 
     id: 0
 

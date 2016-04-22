@@ -15,8 +15,7 @@ body > div {
   margin-bottom: 15px;
   padding: 10px;
   color: #000;
-  border-bottom: 1px solid #000;
-  cursor: pointer;
+  cursor: text;
 }
 .ICOCell.selected {
   background-color: #add8e6;

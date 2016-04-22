@@ -1,7 +1,7 @@
 const ActionTypes = do
   ICOF:
     ADD_CELL: \ADD_CELL
-    REMOVE_CELL: \REMOVE_CELL
+    SELECT_CELL: \SELECT_CELL
 
 
 const ActionCreators = do
@@ -11,13 +11,12 @@ const ActionCreators = do
       payload: {}
     }
 
-  removeCell: (index) ->
+  selectCell: (index) ->
     {
-      type: ActionTypes.ICOF.REMOVE_CELL
+      type: ActionTypes.ICOF.SELECT_CELL
       payload:
         index
     }
-
 
 
 module.exports = {

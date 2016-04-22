@@ -13,22 +13,29 @@ require! {
 const ICOF = React.createClass do
 
   render: ->
-    div {className: \ICOF, onClick: @props.onClick},
+    document.onkeydown = @_onKeyDown
+
+    div {className: \ICOF, onKeyDown: @_onKeyDown},
       map ~>
-        createElement ICOCell, {key: it.index, index: it.index, text: it.text}
-      , @props.content
+        createElement ICOCell, {key: it.index, content: it, onClick: @props.onClick}
+      , @props.cells
+
+
+  _onKeyDown: ->
+    console.log it
 
 
 
 mapStateToProps = (state) ->
   {
-    content: state.ICOF.content
+    cells: state.ICOF.cells
   }
 
 mapDispatchToProps = (dispatch) ->
   {
-    onClick: ->
-      dispatch ActionCreators.addCell()
+    onClick: (event) ->
+      cellId = event.target.dataset.cellId
+      dispatch ActionCreators.selectCell cellId
   }
 
 module.exports = connect mapStateToProps, mapDispatchToProps <| ICOF
