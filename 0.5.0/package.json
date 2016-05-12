@@ -1,0 +1,39 @@
+{
+  "name": "ico-mvp",
+  "version": "0.5.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "lsc --const server.ls",
+    "start-dev": "node-dev server.ls | gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduardo Nuzzi",
+  "license": "ISC",
+  "browserify": {
+    "transform": [
+      "browserify-livescript"
+    ]
+  },
+  "dependencies": {
+    "browserify-livescript": "^0.2.3",
+    "draft-js": "^0.7.0",
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-livescript": "^3.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-stylus": "^2.3.1",
+    "livescript": "^1.4.0",
+    "prelude-ls": "^1.1.2",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
