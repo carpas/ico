@@ -26,7 +26,7 @@ gulp
 		.on \error, notifyOnError
 		.pipe plumber do
 			errorHandler: notifyOnError
-		.pipe source \main.js
+		.pipe source \js/main.js
 		.pipe gulp.dest destDir
 		.pipe livereload!
 
@@ -51,7 +51,7 @@ gulp
 				browsers: ["last 2 versions"]
 				-cascade
 			}
-			.pipe gulp.dest destDir
+			.pipe gulp.dest "#destDir/css"
 			.pipe livereload!
 
 

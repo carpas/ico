@@ -2,7 +2,7 @@ require! {
   \react : React
   \react-dom : ReactDOM
   \../../actions/actions : {ActionCreators}
-  \draft-js : {Editor, EditorState}
+  \draft-js : {Editor, EditorState, RichUtils, getDefaultKeyBinding}
   \react-redux : {connect}
 }
 
@@ -14,7 +14,22 @@ const ICOF = React.createClass do
 
   render: ->
     div {className: \ICOF},
-      createElement Editor, {editorState: @props.editorState, onChange: @props.onChange}
+      createElement Editor, do
+        editorState: @props.editorState
+        onChange: @props.onChange
+        handleKeyCommand: @handleKeyCommand
+
+
+  handleKeyCommand: (command) ->
+    const newState = RichUtils.handleKeyCommand @props.editorState, command
+
+    if newState
+      @props.onChange newState
+
+      return true
+
+    false
+
 
 
 
