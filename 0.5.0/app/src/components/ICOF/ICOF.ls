@@ -2,8 +2,9 @@ require! {
   \react : React
   \react-dom : ReactDOM
   \../../actions/actions : {ActionCreators}
-  \draft-js : {Editor, EditorState, RichUtils, getDefaultKeyBinding}
+  \draft-js : {Editor, EditorState, RichUtils, getDefaultKeyBinding, Entity, AtomicBlockUtils}
   \react-redux : {connect}
+  \../ICOCell/ICOCell : {ICOCell}
 }
 
 {DOM, createElement} = React
@@ -12,12 +13,40 @@ require! {
 
 const ICOF = React.createClass do
 
+  componentWillUpdate: ->
+    #### FIXME: Find better way to handle me
+    unorderedListBlockType = 'unordered-list-item'
+    currentBlockType = RichUtils.getCurrentBlockType @props.editorState
+    unless currentBlockType is unorderedListBlockType
+      @props.onChange <| RichUtils.toggleBlockType @props.editorState, unorderedListBlockType
+
+
   render: ->
     div {className: \ICOF},
       createElement Editor, do
         editorState: @props.editorState
         onChange: @props.onChange
         handleKeyCommand: @handleKeyCommand
+        blockRendererFn: @blockRendererFn
+        onTab: @onTab
+
+
+  blockRendererFn: (contentBlock) ->
+    blockType = contentBlock.getType()
+
+    switch blockType
+      | \unordered-list-item =>
+        do
+          component: ICOCell
+          editable: true
+
+
+  onTab: (event) ->
+    event.preventDefault!
+    {editorState} = @props
+    newEditorState = RichUtils.onTab event, editorState, 40
+    unless newEditorState is editorState
+      @props.onChange newEditorState
 
 
   handleKeyCommand: (command) ->
@@ -25,11 +54,9 @@ const ICOF = React.createClass do
 
     if newState
       @props.onChange newState
-
       return true
 
     false
-
 
 
 
@@ -41,7 +68,7 @@ mapStateToProps = (state) ->
 mapDispatchToProps = (dispatch) ->
   {
     onChange: (editorState) ->
-      dispatch ActionCreators.updateEditorContent editorState
+      dispatch ActionCreators.updateEditorState editorState
   }
 
 module.exports = connect mapStateToProps, mapDispatchToProps <| ICOF

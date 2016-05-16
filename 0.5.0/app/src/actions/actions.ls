@@ -1,12 +1,12 @@
 const ActionTypes = do
   ICOF:
-    UPDATE_CONTENT: \UPDATE_CONTENT
+    UPDATE_STATE: \UPDATE_STATE
 
 
 const ActionCreators = do
-  updateEditorContent: (editorState) ->
+  updateEditorState: (editorState) ->
     {
-      type: ActionTypes.ICOF.UPDATE_CONTENT
+      type: ActionTypes.ICOF.UPDATE_STATE
       payload:
         editorState: editorState
     }

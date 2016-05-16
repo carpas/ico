@@ -8,7 +8,7 @@ require! {
 ICOF = (state = initialState.ICOF, action) ->
 
   switch action.type
-    | ActionTypes.ICOF.UPDATE_CONTENT =>
+    | ActionTypes.ICOF.UPDATE_STATE =>
       Object.assign {}, state, do
         editorState: action.payload.editorState
 
