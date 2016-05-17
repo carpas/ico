@@ -6,7 +6,6 @@ require! {
 
 
 ICOF = (state = initialState.ICOF, action) ->
-
   switch action.type
     | ActionTypes.ICOF.UPDATE_STATE =>
       Object.assign {}, state, do
@@ -16,5 +15,11 @@ ICOF = (state = initialState.ICOF, action) ->
       state
 
 
+currentLoggedUser = (state = initialState.currentLoggedUser, action) ->
+  switch action.type
+    | _ =>
+      state
 
-module.exports = combineReducers {ICOF}
+
+
+module.exports = combineReducers {ICOF, currentLoggedUser}

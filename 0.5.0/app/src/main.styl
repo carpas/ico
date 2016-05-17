@@ -10,15 +10,15 @@ $bg-img($url, $position=center, $size=cover)
   background-repeat no-repeat
 
 
-$flex($direction, $justify=center, $align-items=center)
+$flex($direction, $justify=center, $align-items=flex-start)
   display flex
   flex-direction $direction
   justify-content $justify
-  align-items center $align-items
+  align-items $align-items
 
 
 //// Fonts
-$font-primary = "Lato"
+$font-primary = Lato, Arial, sans-serif
 
 
 //// General Styles
@@ -34,7 +34,6 @@ $font-primary = "Lato"
 
 ul li
   list-style none !important
-  list-style-type none !important
 
 
 //// Import Components Styles

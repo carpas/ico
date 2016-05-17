@@ -33,7 +33,7 @@ const ICOF = React.createClass do
         blockRendererFn: @blockRendererFn
         onTab: @onTab
         key: 1
-      div {className: \ICOF-user, key: 2}
+      div {className: \ICOF-user, key: 2, style: {backgroundImage: "url(#{@props.currentLoggedUser.profileImg})"}}
     ]
 
 
@@ -67,14 +67,13 @@ const ICOF = React.createClass do
 
 
 mapStateToProps = (state) ->
-  {
+  do
     editorState: state.ICOF.editorState
-  }
+    currentLoggedUser: state.currentLoggedUser
 
 mapDispatchToProps = (dispatch) ->
-  {
+  do
     onChange: (editorState) ->
       dispatch ActionCreators.updateEditorState editorState
-  }
 
 module.exports = connect mapStateToProps, mapDispatchToProps <| ICOF

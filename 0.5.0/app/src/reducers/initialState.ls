@@ -6,6 +6,8 @@ require! {
 const initialState =
   ICOF:
     editorState: EditorState.createEmpty!
+  currentLoggedUser:
+    profileImg: \/img/user-profile.png
 
 
 
