@@ -9,14 +9,15 @@ require! {
 
 {DOM, createElement} = React
 {div} = DOM
+unorderedListBlockType = 'unordered-list-item'
 
 
 const ICOF = React.createClass do
 
   componentWillUpdate: ->
     #### FIXME: Find better way to handle me
-    unorderedListBlockType = 'unordered-list-item'
     currentBlockType = RichUtils.getCurrentBlockType @props.editorState
+
     unless currentBlockType is unorderedListBlockType
       @props.onChange <| RichUtils.toggleBlockType @props.editorState, unorderedListBlockType
 
@@ -35,7 +36,7 @@ const ICOF = React.createClass do
     blockType = contentBlock.getType()
 
     switch blockType
-      | \unordered-list-item =>
+      | unorderedListBlockType =>
         do
           component: ICOCell
           editable: true
