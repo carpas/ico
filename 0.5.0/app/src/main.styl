@@ -3,10 +3,25 @@ $size()
   width arguments
 
 
-@import "components/ICOF/ICOF"
-@import "components/ICOCell/ICOCell"
+$bg-img($url, $position=center, $size=cover)
+  background-image url($url)
+  background-position $position
+  background-size $size
+  background-repeat no-repeat
 
 
+$flex($direction, $justify=center, $align-items=center)
+  display flex
+  flex-direction $direction
+  justify-content $justify
+  align-items center $align-items
+
+
+//// Fonts
+$font-primary = "Lato"
+
+
+//// General Styles
 *
   box-sizing border-box
   margin 0
@@ -15,3 +30,13 @@ $size()
 
 #ico-wrapper, body, html
   $size 100%
+
+
+ul li
+  list-style none !important
+  list-style-type none !important
+
+
+//// Import Components Styles
+@import "components/ICOF/ICOF"
+@import "components/ICOCell/ICOCell"

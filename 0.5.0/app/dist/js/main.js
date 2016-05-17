@@ -72,13 +72,22 @@ ICOF = React.createClass({
   render: function(){
     return div({
       className: 'ICOF'
-    }, createElement(Editor, {
-      editorState: this.props.editorState,
-      onChange: this.props.onChange,
-      handleKeyCommand: this.handleKeyCommand,
-      blockRendererFn: this.blockRendererFn,
-      onTab: this.onTab
-    }));
+    }, [
+      div({
+        className: 'ICOF-title',
+        key: 0
+      }, "ICO"), createElement(Editor, {
+        editorState: this.props.editorState,
+        onChange: this.props.onChange,
+        handleKeyCommand: this.handleKeyCommand,
+        blockRendererFn: this.blockRendererFn,
+        onTab: this.onTab,
+        key: 1
+      }), div({
+        className: 'ICOF-user',
+        key: 2
+      })
+    ]);
   },
   blockRendererFn: function(contentBlock){
     var blockType;

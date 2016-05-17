@@ -23,13 +23,18 @@ const ICOF = React.createClass do
 
 
   render: ->
-    div {className: \ICOF},
+    div {className: \ICOF}, [
+      div {className: \ICOF-title, key: 0},
+        "ICO"
       createElement Editor, do
         editorState: @props.editorState
         onChange: @props.onChange
         handleKeyCommand: @handleKeyCommand
         blockRendererFn: @blockRendererFn
         onTab: @onTab
+        key: 1
+      div {className: \ICOF-user, key: 2}
+    ]
 
 
   blockRendererFn: (contentBlock) ->
