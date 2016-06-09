@@ -2,14 +2,13 @@ require! {
 	gulp
 	browserify
 	\gulp-stylus : stylus
-	\gulp-livereload : livereload
 	\gulp-autoprefixer : autoprefixer
 	\vinyl-source-stream : source
 	\gulp-notify : notify
 	\gulp-jade : jade
 	\gulp-livescript : livescript
-	\vinyl-source-stream : source
 	\gulp-plumber : plumber
+	\browser-sync : bs
 }
 
 destDir = \app/dist
@@ -28,7 +27,7 @@ gulp
 			errorHandler: notifyOnError
 		.pipe source \js/main.js
 		.pipe gulp.dest destDir
-		.pipe livereload!
+		.pipe bs.stream!
 
 
 	..task \jade, !->
@@ -38,7 +37,7 @@ gulp
 				errorHandler: notifyOnError
 			.pipe jade!
 			.pipe gulp.dest destDir
-			.pipe livereload!
+			.pipe bs.stream!
 
 
 	..task \stylus, !->
@@ -52,11 +51,12 @@ gulp
 				-cascade
 			}
 			.pipe gulp.dest "#destDir/css"
-			.pipe livereload!
+			.pipe bs.stream!
 
 
 	..task \default, !->
-		livereload.listen!
+		bs.init do
+			proxy: "localhost:8000"
 		gulp
 			..watch \app/src/**/*.ls, <[livescript]>
 			..watch \app/src/index.jade, <[jade]>
