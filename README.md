@@ -101,7 +101,7 @@ Como em toda aplicação baseada em Redux e React, os elementos principais prese
   - ICOCell
 ```
 
-#### Criar Componentes
+#### Criar novos Componentes
 
 Para implementar novos Componentes no projeto, basta:
 
