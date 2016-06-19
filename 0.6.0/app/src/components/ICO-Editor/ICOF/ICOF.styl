@@ -1,0 +1,35 @@
+$margin-icof-header = 11px
+
+
+.ICOF
+  $size 100%
+  $bg-img('/img/BG.png')
+  $flex(row)
+  background-color black
+  padding 15px
+  color white
+  font-family $font-primary
+
+  *
+    font-size 24px
+
+
+  &-title
+    font-family $font-primary
+    font-size 30px
+    margin $margin-icof-header
+    flex-shrink 0
+
+
+  .DraftEditor-root
+    flex-grow 1
+
+
+  &-user
+    $size 50px
+    $bg-img("")
+    border 1px solid white
+    border-radius 50%
+    margin $margin-icof-header
+    flex-shrink 0
+    cursor pointer

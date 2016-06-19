@@ -9,6 +9,7 @@ let notify = require('gulp-notify');
 let jade = require('gulp-jade');
 let plumber = require('gulp-plumber');
 let bs = require('browser-sync');
+let babelify = require("babelify");
 
 let destDir = "app/dist";
 
@@ -18,7 +19,8 @@ function notifyOnError(msg) {
 
 
 gulp.task("javascript", () => {
-  browserify("./app/src/main.js")
+  browserify("./app/src/main.js", {debug: true})
+    .transform(babelify)
     .bundle()
     .on("error", notifyOnError)
     .pipe(plumber({

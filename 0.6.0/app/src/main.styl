@@ -1,3 +1,41 @@
+$size()
+  height arguments
+  width arguments
+
+
+$bg-img($url, $position=center, $size=cover)
+  background-image url($url)
+  background-position $position
+  background-size $size
+  background-repeat no-repeat
+
+
+$flex($direction, $justify=center, $align-items=flex-start)
+  display flex
+  flex-direction $direction
+  justify-content $justify
+  align-items $align-items
+
+
+//// Fonts
+$font-primary = Lato, Arial, sans-serif
+
+
+//// General Styles
 *
+  box-sizing border-box
   margin 0
   padding 0
+
+
+#ico-wrapper, body, html
+  $size 100%
+
+
+ul li
+  list-style none !important
+
+
+//// Import Components Styles
+@import "components/ICO-Editor/ICOF/ICOF"
+@import "components/ICO-Editor/ICOCell/ICOCell"
