@@ -1,7 +1,7 @@
 # ICO
 
 ## Versionamento
-Este repositório contém todas as versões já realizadas do ICO. Estas estão divididas em pastas, sendo a última versão:
+Este repositório contém todas as versões já realizadas do ICO. Estas estão divididas em pastas (não é o ideal, mas facilita para encontrar implementações em outras versões de uma forma rápida), sendo a última versão:
 
 ```
 0.6.0
@@ -10,7 +10,7 @@ Este repositório contém todas as versões já realizadas do ICO. Estas estão 
 
 ## Instalação
 
-Em primeiro lugar, ```cd ./0.6.0``` na versão do projeto mais recente.
+Em primeiro lugar, ```cd``` na versão do projeto mais recente. (No momento é ```0.6.0```)
 
 Antes de iniciar o desenvolvimento é necessário baixar todas as dependências. Para isso, você precisa ter o Node(>=5.0) e o NPM [instalados](https://nodejs.org/en/download/).
 Você pode conferir suas instalações com:
